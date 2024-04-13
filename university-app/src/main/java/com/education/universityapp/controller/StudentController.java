@@ -1,6 +1,7 @@
 package com.education.universityapp.controller;
 
 import com.education.universityapp.model.Student;
+import com.education.universityapp.model.StudentOutput;
 import com.education.universityapp.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> add(@RequestBody Student student) {
-        Student addedStudent = studentsService.addStudent(student);
+    public ResponseEntity<StudentOutput> add(@RequestBody Student student) {
+        StudentOutput addedStudent = studentsService.addStudent(student);
         return ResponseEntity.ok(addedStudent);
     }
 

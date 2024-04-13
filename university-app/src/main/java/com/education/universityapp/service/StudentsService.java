@@ -31,7 +31,7 @@ public class StudentsService {
         return (List<Student>) given().spec(specification).get().as(List.class);
     }
 
-    public Student addStudent(Student student) {
+    public StudentOutput addStudent(Student student) {
         List<String> genders = Arrays.asList("male", "female");
         if (StringUtils.isEmpty(student.getGender())) {
             student.setGender(genders
@@ -55,7 +55,12 @@ public class StudentsService {
                 .addHeader("Content-Type", "application/json")
                 .setBody(this.getUpdatedStudent(student)).build();
         given().spec(specification).post().then().statusCode(201);
-        return student;
+        StudentOutput su = new StudentOutput();
+        su.setName(student.getName());
+        su.setGender(student.getGender());
+        su.setEmail(student.getEmail());
+        su.setPhone(student.getPhone());
+        return su;
     }
 
     public Student getStudent(String email) {
