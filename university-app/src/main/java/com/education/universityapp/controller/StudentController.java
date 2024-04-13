@@ -29,7 +29,6 @@ public class StudentController {
         return ResponseEntity.ok(addedStudent);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/{email}")
     public ResponseEntity<Student> update(@RequestBody Student student,
                                           @PathVariable("email") String email) {
@@ -47,5 +46,11 @@ public class StudentController {
     public ResponseEntity<Void> delete(@PathVariable("email") String email) {
         studentsService.deleteStudent(email);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Student>> search(@RequestParam("email") String email) {
+        List<Student> studentList = studentsService.searchStudents(email);
+        return ResponseEntity.ok(studentList);
     }
 }

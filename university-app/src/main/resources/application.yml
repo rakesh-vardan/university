@@ -10,4 +10,4 @@ server:
 student:
     app:
         base:
-            url: https://crudcrud.com/api/7feb27b182154e57b9dae0f580ede3a3/students
+            url: https://crudcrud.com/api/a185d1b907884ec08b190109fe0888df/students

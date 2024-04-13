@@ -1,6 +1,8 @@
 <h1>Students Data</h1>
 <button class="load-btn" (click)="loadStudents()">Load Student Data</button>
 <button class="add-btn" (click)="addStudent()">Add Student</button>
+<div *ngIf="loading">Loading...</div>
+<input type="text" [formControl]="searchControl" placeholder="Search students by email">
 <table>
     <tr>
         <th>Name</th>

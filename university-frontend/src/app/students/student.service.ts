@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from './student';
@@ -37,5 +37,10 @@ export class StudentService {
   loadStudents(): Observable<void> {
     const url = `${this.apiUrl}/load`;
     return this.http.get<void>(url);
+  }
+
+  searchStudents(searchTerm: string): Observable<Student[]> {
+    const params = new HttpParams().set('email', searchTerm);
+    return this.http.get<Student[]>(`${this.apiUrl}/search`, { params });
   }
 }

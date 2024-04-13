@@ -169,6 +169,18 @@ public class StudentsService {
         }
     }
 
+    public List<Student> searchStudents(String emailText) {
+        RequestSpecification specification = new RequestSpecBuilder()
+                .setBaseUri(studentAppBaseUrl).build();
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<LinkedHashMap<String, Object>> list = given().spec(specification).get().as(List.class);
+        List<Student> studentList = list.stream()
+                .map(map -> mapper.convertValue(map, Student.class))
+                .toList();
+        return studentList.stream().filter(st -> st.getEmail().contains(emailText)).toList();
+    }
+
     private StudentUpdate getUpdatedStudent(Student student) {
         StudentUpdate st = new StudentUpdate();
         st.setLocation(student.getLocation());
