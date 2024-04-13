@@ -1,0 +1,12 @@
+app:
+    base:
+        url: http://localhost:8080
+spring:
+    application:
+        name: university-app
+server:
+    port: 8090
+student:
+    app:
+        base:
+            url: http://localhost:8080/students

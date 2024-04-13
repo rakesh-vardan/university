@@ -1,0 +1,8 @@
+app:
+    base:
+        url: https://1z783.wiremockapi.cloud/
+spring:
+    application:
+        name: university-app
+server:
+    port: 8090

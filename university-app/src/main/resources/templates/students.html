@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1>Students Data</h1>
+<a href="#" th:href="@{/loadStudents}"><button>Load Student Data</button></a>
+<a href="#" th:href="@{/addStudent}"><button>Add Student</button></a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Location</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name.title} + ' ' + ${student.name.first} + ' ' + ${student.name.last}"></td>
+        <td th:text="${student.gender}"></td>
+        <td th:text="${student.location.street.number} + ' ' + ${student.location.street.name} + ', ' + ${student.location.city} + ', ' + ${student.location.state} + ', ' + ${student.location.country}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.phone}"></td>
+        <td>
+            <a th:href="@{/updateStudent/{email}(email=${student.email})}"><button class="update-btn">Update</button></a>
+        </td>
+        <td>
+            <a th:href="@{/deleteStudent/{email}(email=${student.email})}"><button class="delete-btn">Delete</button></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

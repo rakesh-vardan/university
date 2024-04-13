@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  flex: 1 1 calc(50% - 40px);
+  /* each .form-group will take up just under half the width of the form */
+  margin: 10px;
+  /* add margin to create space around .form-group */
+}
+
+.form-group:nth-child(odd) {
+  margin-right: 20px;
+  /* add a right margin to every other .form-group */
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  height: 10px; /* set a consistent height */
+  padding: 10px;
+  margin-top: 5px;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 200px;
+  /* adjust the width of the button */
+  margin: 20px auto 0;
+  /* center the button */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Universities List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1>Top-5 Universities in India</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>Code</th>
+        <th>WebSite</th>
+        <!-- Add more columns as necessary -->
+    </tr>
+    <tr th:each="university : ${universities_v1}">
+        <td th:text="${university.name}"></td>
+        <td th:text="${university.country}"></td>
+        <td th:text="${university['state-province']}"></td>
+        <td th:text="${university.alpha_two_code}"></td>
+        <td>
+            <ul th:each="webPage : ${university.web_pages}">
+                <li><a th:href="${webPage}" th:text="${webPage}"></a></li>
+            </ul>
+        </td>
+        <!-- Add more fields as necessary -->
+    </tr>
+</table>
+</body>
+</html>

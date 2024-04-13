@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 40px); /* each .form-group will take up just under half the width of the form */
+            margin: 10px; /* add margin to create space around .form-group */
+        }
+        .form-group:nth-child(odd) {
+            margin-right: 20px; /* add a right margin to every other .form-group */
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+          input[type="submit"] {
+            display: block;
+            width: 200px; /* adjust the width of the button */
+            margin: 20px auto 0; /* center the button */
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>Add Student</h1>
+<form action="#" th:action="@{/addStudent}" method="post" th:object="${student}">
+    <div class="form-group">
+        <label for="name">Title:</label>
+        <select id="title" th:field="*{name.title}">
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+            <option value="Miss">Miss</option>
+            <option value="Mrs">Mrs</option>
+        </select>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name.first}" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" th:field="*{name.last}" required>
+        <label for="gender">Gender:</label>
+        <select id="gender" th:field="*{gender}">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+    <div class="form-group">
+        <label for="street">Street:</label>
+        <input type="text" id="street" th:field="*{location.street.number}" required>
+        <label for="location">Location:</label>
+        <input type="text" id="location" th:field="*{location.street.name}" required>
+        <label for="city">City:</label>
+        <input type="text" id="city" th:field="*{location.city}" required>
+        <label for="state">State:</label>
+        <input type="text" id="state" th:field="*{location.state}" required>
+        <label for="country">Country:</label>
+        <input type="text" id="country" th:field="*{location.country}" required>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" th:field="*{phone}" required>
+    </div>
+    <input type="submit" value="Add Student">
+</form>
+</body>
+</html>

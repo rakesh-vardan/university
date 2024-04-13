@@ -1,0 +1,28 @@
+<h1>Students Data</h1>
+<button class="load-btn" (click)="loadStudents()">Load Student Data</button>
+<button class="add-btn" (click)="addStudent()">Add Student</button>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Location</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let student of students">
+        <td>{{ student.name.title }} {{ student.name.first }} {{ student.name.last }}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.location.street.number }} {{ student.location.street.name }}, {{ student.location.city }}, {{ student.location.state }}, {{ student.location.country }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone }}</td>
+        <td>
+          <button class="update-btn" (click)="updateStudent(student.email)">Update</button>
+        </td>
+        <td>
+            <button class="delete-btn" (click)="deleteStudent(student.email)">Delete</button>
+        </td>
+    </tr>
+</table>
+

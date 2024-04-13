@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Universities List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1 th:if="${universities_v2.isEmpty()}" th:text="'Top-5 Universities'"></h1>
+<h1 th:if="!${universities_v2.isEmpty()}" th:text="'Top-5 Universities in ' + ${universities_v2[0].country}"></h1>
+
+<form action="#" th:action="@{/universities/v2}" method="get">
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country">
+    <input type="submit" value="Filter">
+</form>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>Code</th>
+        <th>WebSite</th>
+        <!-- Add more columns as necessary -->
+    </tr>
+    <tr th:each="university : ${universities_v2}">
+        <td th:text="${university.name}"></td>
+        <td th:text="${university.country}"></td>
+        <td th:text="${university['state-province']}"></td>
+        <td th:text="${university.alpha_two_code}"></td>
+        <td>
+            <ul th:each="webPage : ${university.web_pages}">
+                <li><a th:href="${webPage}" th:text="${webPage}"></a></li>
+            </ul>
+        </td>
+        <!-- Add more fields as necessary -->
+    </tr>
+</table>
+</body>
+</html>
